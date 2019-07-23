@@ -19,7 +19,7 @@ describe('test for auth routes', () => {
   let user = null;
   beforeEach(async() => {
     user = JSON.parse(JSON.stringify(await User.create({
-      username: 'Garfild',
+      username: 'Garfield',
       email: 'gar@lasagna.com',
       password: 'IHateMondays'
     })));
