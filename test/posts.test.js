@@ -32,4 +32,14 @@ describe('it is a test for posts', () => {
         });
       });
   });
+
+  it('can get 1 post by id', () => {
+    const posts = getPosts();
+    const post = posts[0];
+    return getAgent()
+      .get(`/api/v1/posts/${post._id}`)
+      .then(res => {
+        expect(res.body).toEqual(post);
+      });
+  });
 });
