@@ -43,3 +43,11 @@ describe('it is a test for posts', () => {
       });
   });
 });
+
+// it('can update a post with patch', () => {
+//   const posts = getPosts();
+//   const post = posts[0];
+//   return getAgent()
+//   .patch(`/api/v1/posts/${post._id}`)
+// })
+
