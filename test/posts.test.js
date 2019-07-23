@@ -8,7 +8,6 @@ describe('it is a test for posts', () => {
         photoURL: 'a photo here',
         caption: 'whatever',
         tags: ['#tardygram', '#ilovemycats']
-
       })
       .then(res => {
         expect(res.body).toEqual({

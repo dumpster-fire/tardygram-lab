@@ -24,10 +24,10 @@ beforeEach(async() => {
   seededPosts = prepare(posts);
 
   return await agent
-    .post('/api/v1/signin')
+    .post('/api/v1/auth/signin')
     .send({ username: users[0].username, email: users[0].email, password: 'password' });
 });
-
+ 
 afterAll(() => {
   return mongoose.connection.close();
 });
