@@ -13,10 +13,10 @@ module.exports = async({ users = 5, posts = 10 } = { users: 5, posts: 10 }) => {
 
   const createdPosts = await Post.create(
     [...Array(posts)].map(() => ({
-      user: chance.pickone(createdUsers)._id,
+      username: chance.pickone(createdUsers)._id,
       photoURL: chance.url(),
       caption: chance.sentence({ word: 5 }),
-      tags: [chance.hashtag({ hashtag: 3 })] //? array
+      tags: [chance.hashtag(), chance.hashtag(), chance.hashtag()] //? array
     }))
   );
 
@@ -31,6 +31,6 @@ module.exports = async({ users = 5, posts = 10 } = { users: 5, posts: 10 }) => {
 
 
 
-  //const createComments = await Comment.create(
-    //comment: chance.sentence(),
- // )
+//const createComments = await Comment.create(
+//comment: chance.sentence(),
+// )
