@@ -35,7 +35,8 @@ describe('test for auth routes', () => {
       .send({
         username: 'Garfield',
         email: 'garfield@lasagna.com',
-        password: 'IHateMondays'
+        password: 'IHateMondays',
+
       })
       .then(res => {
         expect(res.body).toEqual({
@@ -55,7 +56,6 @@ describe('test for auth routes', () => {
         password: 'IHateMondays'
       })
       .then(res => {
-        console.log(res.body, 'SIGN IN');
         expect(res.body).toEqual({
           username: user.username,
           email: user.email,
@@ -66,15 +66,15 @@ describe('test for auth routes', () => {
   });
     
   it('verifies user', async() => {
-    const jon = request.agent(app);
-    return jon
+    const agent = request.agent(app);
+    return agent
       .post('/api/v1/auth/signin')
       .send({
         email: user.email,
         password: 'IHateMondays'
       })
       .then(() => {
-        return jon
+        return agent
           .get('/api/v1/auth/verify');
       })
       .then(res => {
@@ -87,4 +87,3 @@ describe('test for auth routes', () => {
       });
   });
 });
-  
