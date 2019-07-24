@@ -17,7 +17,8 @@ module.exports = async({ users = 5, posts = 10, comments = 10 } = { users: 5, po
       username: chance.pickone(createdUsers)._id,
       photoURL: chance.url(),
       caption: chance.sentence({ word: 5 }),
-      tags: [chance.hashtag(), chance.hashtag(), chance.hashtag()] 
+      tags: [chance.hashtag(), chance.hashtag(), chance.hashtag()],
+      // comments: chance.sentence()
     }))
   );
 
@@ -25,7 +26,7 @@ module.exports = async({ users = 5, posts = 10, comments = 10 } = { users: 5, po
     [...Array(comments)].map(() => ({
       comment: chance.sentence(),
       commentBy: chance.pickone(createdUsers)._id,
-      post: chance.pickone(createdPosts)._id
+      post: createdPosts[0]._id
     }))
   ); 
 

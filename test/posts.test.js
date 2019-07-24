@@ -35,12 +35,13 @@ describe('it is a test for posts', () => {
 
   it('can get 1 post by id', () => {
     const posts = getPosts();
-    const post = posts[0];
-    console.log(posts);
+    const stringifiedPosts = JSON.parse(JSON.stringify(posts));
+    const post = stringifiedPosts[0];
+    console.log(post);
     return getAgent()
       .get(`/api/v1/posts/${post._id}`)
       .then(res => {
-        expect(res.body).toEqual({ ...post, comments: expect.any(Array), username: expect.any(String) });
+        expect(res.body).toEqual({ ...post, comment: expect.any(Array), username: expect.any(String) });
       });
   });
 });
