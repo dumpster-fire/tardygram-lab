@@ -3,7 +3,7 @@ const Post = require('../lib/models/Post');
 const Comment = require('../lib/models/Comment');
 const chance = require('chance').Chance();
 
-module.exports = async({ users = 5, posts = 10, comments = 10 } = { users: 5, posts: 10, comments: 10 }) => {
+module.exports = async({ users = 5, posts = 10, comments = 10 } = { users: 5, posts: 10, comments: 10   }) => {
   const createdUsers = await User.create(
     [...Array(users)].map(() => ({
       username: chance.name(),
@@ -24,8 +24,8 @@ module.exports = async({ users = 5, posts = 10, comments = 10 } = { users: 5, po
   const createdComments = await Comment.create(
     [...Array(comments)].map(() => ({
       comment: chance.sentence(),
-      commentedBy: chance.pickone(createdUsers)._id,
-      post: chance.pickone(createdComments)._id
+      commentBy: chance.pickone(createdUsers)._id,
+      post: chance.pickone(createdPosts)._id
     }))
   ); 
 
