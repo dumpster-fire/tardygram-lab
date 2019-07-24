@@ -37,23 +37,35 @@ describe('it is a test for posts', () => {
     const posts = getPosts();
     const stringifiedPosts = JSON.parse(JSON.stringify(posts));
     const post = stringifiedPosts[0];
-    console.log(post);
+    
     return getAgent()
       .get(`/api/v1/posts/${post._id}`)
       .then(res => {
         expect(res.body).toEqual({ ...post, comment: expect.any(Array), username: expect.any(String) });
       });
   });
+
   it('can update a post with patch', () => {
     const posts = getPosts();
     const stringifiedPosts = JSON.parse(JSON.stringify(posts));
     const post = stringifiedPosts[0];
-    console.log(post);
     return getAgent()
       .patch(`/api/v1/posts/${post._id}`)
       .send({ caption: 'updated caption' })
       .then(res => {
         expect(res.body).toEqual({ ...post, caption: 'updated caption', username: expect.any(String) });
+      });
+  });
+
+  it('deletes a post by id', async() => {
+    const posts = getPosts();
+    const stringifiedPosts = JSON.parse(JSON.stringify(posts));
+    const post = stringifiedPosts[0];
+
+    return getAgent()
+      .delete(`/api/v1/posts/${post._id}`)
+      .then(res => {
+        expect(res.body).toEqual(post);
       });
   });
 });
