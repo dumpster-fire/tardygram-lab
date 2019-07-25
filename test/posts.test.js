@@ -45,6 +45,15 @@ describe('it is a test for posts', () => {
         expect(res.body).toEqual({ ...post, comment: expect.any(Array), username: expect.any(String) });
       });
   });
+  
+  it('gets top 10 posts', () => {
+    return getAgent()
+      .get('/api/v1/posts/popular')
+      .then(res => {
+        console.log(res.body, 'TOP');
+        expect(res.body).toHaveLength(10);
+      });
+  });
 
   it('can update a post with patch', () => {
     const posts = getPosts();
