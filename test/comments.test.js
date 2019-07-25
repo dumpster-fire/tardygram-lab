@@ -22,15 +22,16 @@ describe('it is a test for comments', () => {
       });
   });
 
-  it('can delete a comment', () => {
-    const comments = getComments();
-    const stringifiedComments = JSON.parse(JSON.stringify(comments));
-    const comment = stringifiedComments[0];
 
-    return getAgent()
-      .delete(`/api/v1/comments/${comment._id}`)
-      .then(res => {
-        expect(res.body).toEqual(comment);
-      });
-  });
 });
+  // it('can delete a comment', () => {
+  //   const comments = getComments();
+  //   const stringifiedComments = JSON.parse(JSON.stringify(comments));
+  //   const comment = stringifiedComments[0];
+
+  //   return getAgent()
+  //     .delete(`/api/v1/comments/${comment._id}`)
+  //     .then(res => {
+  //       expect(res.body).toEqual(comment);
+  //     });
+  // });
